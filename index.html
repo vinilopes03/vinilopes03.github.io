@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vinicius Carvalho Lopes · PhD Candidate</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c2340'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Inter,Arial,sans-serif' font-size='28' font-weight='700' fill='%23ffffff'%3EVL%3C/text%3E%3C/svg%3E">
+
+  <!-- SEO / Social -->
+  <meta name="description" content="Vinicius Carvalho Lopes, PhD candidate in Computer Science and Engineering at the University of Notre Dame. Research on the software vulnerability lifecycle: detecting, validating, and remediating vulnerability-contributing commits in open-source software." />
+  <meta property="og:title" content="Vinicius Carvalho Lopes · PhD Candidate" />
+  <meta property="og:description" content="PhD candidate in Computer Science and Engineering researching vulnerability-contributing commits, program analysis, and machine learning for software security." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/photo.jpg" />
+
+<style>
+:root{
+  --bg:#f7f8fb;
+  --surface:#ffffff;
+  --surface-2:#eef2f8;
+  --text:#18212f;
+  --muted:#5f6b7a;
+  --line:#dde3ec;
+  --accent:#0c2340;        /* Notre Dame navy */
+  --accent-soft:#e9eef7;
+  --gold:#c99700;          /* Notre Dame gold, used sparingly */
+  --max:1120px;
+  --radius:18px;
+  --shadow:0 12px 36px rgba(24,33,47,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,248,251,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(221,227,236,.9);
+}
+.header-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;flex-direction:column;color:var(--text);line-height:1.15}
+.brand:hover{text-decoration:none}
+.brand .name{font-weight:750;font-size:1.05rem}
+.brand .role{font-size:.78rem;color:var(--muted);margin-top:4px}
+.primary-nav ul{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
+.primary-nav a{display:block;padding:9px 11px;border-radius:10px;color:var(--muted);font-size:.88rem;font-weight:550;white-space:nowrap}
+.primary-nav a:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+.primary-nav .cta{background:var(--text);color:#fff;padding-inline:15px}
+.primary-nav .cta:hover{background:var(--accent);color:#fff}
+.nav-toggle{display:none;background:none;border:0;font-size:1.4rem;cursor:pointer}
+
+/* Hero */
+.hero{
+  padding:78px 0 54px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(12,35,64,.10), transparent 32%),
+    radial-gradient(circle at 18% 10%, rgba(201,151,0,.08), transparent 26%);
+}
+.hero-inner{display:grid;grid-template-columns:190px minmax(0,1fr) 300px;gap:42px;align-items:center}
+.hero-photo img{
+  width:190px;height:190px;object-fit:cover;border-radius:28px;
+  box-shadow:var(--shadow);border:5px solid var(--surface);background:var(--surface-2)
+}
+.big{font-size:clamp(2.7rem,6vw,5rem);line-height:.98;margin:0 0 20px;letter-spacing:-.055em}
+.lead{font-size:1.18rem;color:var(--muted);max-width:680px;margin:0 0 22px}
+.lead strong{color:var(--text)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.button,.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 16px;border-radius:11px;font-weight:650;border:1px solid var(--text)
+}
+.button{background:var(--text);color:#fff}
+.button:hover{color:#fff;text-decoration:none;transform:translateY(-1px);background:var(--accent)}
+.button.ghost{background:transparent;color:var(--text)}
+.button.ghost:hover{background:var(--surface-2);color:var(--text)}
+.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.hero-card h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 14px}
+.hero-card p{margin:8px 0;font-size:.91rem}
+.social-links{margin-top:15px;font-size:.9rem}
+
+/* Sections */
+.section{padding:72px 0}
+.section.alt{background:var(--surface)}
+.section h2{font-size:clamp(1.7rem,3vw,2.35rem);letter-spacing:-.03em;margin:0 0 30px}
+.section h2 .sub{font-size:.95rem;font-weight:500;letter-spacing:0;margin-left:10px;color:var(--muted)}
+.section h3{letter-spacing:-.015em}
+#about p{font-size:1.08rem;max-width:900px;color:#354052}
+.bullet-list{padding-left:20px}
+.bullet-list li{margin:10px 0}
+
+.timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.timeline .item,.job,.project-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:23px}
+.section.alt .timeline .item,.section.alt .job,.section.alt .project-card{background:var(--bg)}
+.timeline h3,.job h3,.project-card h3{margin:0 0 8px;font-size:1.05rem}
+.meta{color:var(--muted);font-size:.9rem;margin:4px 0 10px}
+
+/* Publications */
+.pub-list{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.pub-item{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;transition:.18s ease
+}
+.section.alt .pub-item{background:var(--bg)}
+.pub-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#c9d4e3}
+.pub-title{font-size:1.08rem;font-weight:700;line-height:1.4;margin:0 0 9px}
+.pub-title a{color:var(--text)}
+.pub-title a:hover{color:var(--accent)}
+.pub-meta{margin:0;color:var(--muted);font-size:.92rem}
+.pub-links{margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+.pub-links a{
+  font-size:.8rem;font-weight:650;padding:5px 11px;border-radius:999px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid transparent
+}
+.pub-links a:hover{text-decoration:none;border-color:var(--accent)}
+#publications h3{margin:38px 0 16px;font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+#publications h3:first-of-type{margin-top:0}
+
+/* Experience */
+#experience .container{max-width:980px}
+.job{margin-bottom:14px}
+.job ul{margin:9px 0 0;padding-left:18px}
+.job li{margin:6px 0}
+
+/* News */
+.news-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.news-list li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 20px}
+.news-list time{display:block;color:var(--muted);font-size:.78rem;font-weight:650;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+
+/* Research interests */
+#research-interests .bullet-list{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:0;list-style:none}
+#research-interests .bullet-list li{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin:0}
+#research-interests .bullet-list strong{display:block;margin-bottom:6px}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project-card{display:flex;flex-direction:column}
+.project-card p{color:var(--muted);flex:1}
+.project-card .btn{align-self:flex-start;background:transparent;color:var(--text);font-size:.88rem}
+.project-card .btn:hover{text-decoration:none;background:var(--surface-2)}
+.tag{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px;margin-bottom:10px
+}
+.more{color:var(--muted)}
+
+/* Service */
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+#cv{text-align:center}
+.site-footer{padding:32px 0;border-top:1px solid var(--line);background:var(--surface)}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:center}
+.footer-inner p{margin:3px 0;color:var(--muted);font-size:.88rem}
+
+@media(max-width:1080px){
+  .primary-nav a{padding:9px 8px;font-size:.84rem}
+}
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:150px 1fr}
+  .hero-photo img{width:150px;height:150px}
+  .hero-card{grid-column:1/-1}
+  .timeline,.projects-grid,.service-grid,#research-interests .bullet-list{grid-template-columns:1fr 1fr}
+  .primary-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line)}
+  .primary-nav.open{display:block}
+  .primary-nav ul{display:block;padding:12px 20px 20px}
+  .nav-toggle{display:block}
+}
+@media(max-width:680px){
+  .container{width:min(100% - 28px,var(--max))}
+  .hero{padding-top:48px}
+  .hero-inner{grid-template-columns:1fr;gap:24px}
+  .hero-photo img{width:135px;height:135px}
+  .big{font-size:3rem}
+  .timeline,.projects-grid,.service-grid,#research-interests .bullet-list{grid-template-columns:1fr}
+  .footer-inner{display:block}
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <span class="name">Vinicius Carvalho Lopes</span>
+        <span class="role">PhD Candidate · Computer Science &amp; Engineering</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        &#9776;
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#honors">Honors</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#research-interests">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#service">Teaching</a></li>
+          <li><a class="cta" href="CV_Vinicius_Lopes.pdf" target="_blank" rel="noopener">Download CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-photo">
+          <img src="images/photo.jpg" alt="Photo of Vinicius Carvalho Lopes"
+               onerror="this.onerror=null;this.src='images/photo-placeholder.svg';" />
+        </div>
+
+        <div class="hero-text">
+          <h1 class="big">Vinicius Carvalho Lopes</h1>
+          <p class="lead">
+            PhD Candidate in Computer Science and Engineering at the University of Notre Dame, working on the <strong>software vulnerability lifecycle</strong>: detecting, validating, and remediating <strong>vulnerability-contributing commits</strong> in open-source software.
+          </p>
+          <p class="actions">
+            <a class="button" href="#publications">Publications</a>
+            <a class="button ghost" href="CV_Vinicius_Lopes.pdf" target="_blank" rel="noopener">CV</a>
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:vlopes@nd.edu">vlopes@nd.edu</a></p>
+          <p>Location: University of Notre Dame, Notre Dame, IN</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/vinilopes03/" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://scholar.google.com/citations?user=oDJHnFcAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> ·
+            <a href="https://github.com/vinilopes03" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About me</h2>
+        <p>I am a PhD candidate in Computer Science and Engineering at the University of Notre Dame, advised by Dr. Joanna C. S. Santos. My research sits at the intersection of software engineering and security: I study how vulnerabilities enter open-source projects through vulnerability-contributing commits (VCCs), how trustworthy the datasets that label them really are, and how program analysis and machine learning can catch and remediate security-critical code changes earlier in the development cycle.</p>
+        <p>My dissertation, <em>Software Vulnerability Lifecycle: Detection, Validation and Remediation of Security-Critical Code Changes</em>, combines empirical studies of VCC dataset quality (including exploit-based validation of SZZ-labeled commits), machine-learning-based VCC detection, incremental static analysis for evolving codebases, and synthetic VCC dataset generation. I passed my candidacy exam in December 2025 and expect to graduate in May 2027.</p>
+        <p>Before Notre Dame, I earned an M.Sc. in Computer Science and a B.Sc. in Software Engineering at the Federal University of Goiás (UFG) in Brazil, where I worked on low-cost IoT systems for precision livestock farming, systems-of-systems, and software testing, in collaboration with Embrapa and industry partners.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="item">
+            <h3>PhD in Computer Science and Engineering</h3>
+            <p class="meta">University of Notre Dame · Jan 2022 – May 2027 (expected)</p>
+            <p>Advisor: Dr. Joanna C. S. Santos.<br>Dissertation: <em>Software Vulnerability Lifecycle: Detection, Validation and Remediation of Security-Critical Code Changes</em>.<br>Candidacy exam passed in December 2025.</p>
+          </div>
+
+          <div class="item">
+            <h3>M.S. in Computer Science and Engineering</h3>
+            <p class="meta">University of Notre Dame · December 2025</p>
+            <p>Earned en route to the PhD.</p>
+          </div>
+
+          <div class="item">
+            <h3>M.Sc. in Computer Science</h3>
+            <p class="meta">Federal University of Goiás (UFG), Goiânia, Brazil · March 2020 – April 2022</p>
+            <p>CAPES-funded research assistant working on IoT architectures for precision agriculture.</p>
+          </div>
+
+          <div class="item">
+            <h3>B.Sc. in Software Engineering</h3>
+            <p class="meta">Federal University of Goiás (UFG), Goiânia, Brazil · 2014 – December 2018</p>
+            <p>National scholarship recipient; CNPq undergraduate research assistant.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="section alt">
+      <div class="container">
+        <h2>Publications <a class="sub" href="https://scholar.google.com/citations?user=oDJHnFcAAAAJ&amp;hl=en" target="_blank" rel="noopener">[Google Scholar]</a></h2>
+
+        <h3>Peer-Reviewed Publications</h3>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.4230/LIPIcs.ESEM.2026.46" target="_blank" rel="noopener">On the Quality of Vulnerability-Contributing Commit Datasets: A Systematic Review and Exploit-Based Evaluation</a></p>
+            <p class="pub-meta"><strong>Vinicius Carvalho Lopes</strong>, Matthew Zampino, Christian Garcia, Joanna C. S. Santos, Adriana Sejfia.<br>
+            <b>20th International Symposium on Empirical Software Engineering and Measurement (ESEM)</b>, LIPIcs vol. 394, pp. 46:1–46:21, 2026 (19% acceptance rate)</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.4230/LIPIcs.ESEM.2026.46" target="_blank" rel="noopener">DOI</a>
+              <a href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol394-esem2026/LIPIcs.ESEM.2026.46/LIPIcs.ESEM.2026.46.pdf" target="_blank" rel="noopener">PDF</a>
+              <a href="https://doi.org/10.5281/zenodo.21904512" target="_blank" rel="noopener">Artifact</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.1016/j.infsof.2026.108333" target="_blank" rel="noopener">Security in the Age of AI Teammates: An Empirical Study of Agentic Pull Requests on GitHub</a></p>
+            <p class="pub-meta">Mohammed Latif Siddiq, Xinye Zhao, <strong>Vinicius Carvalho Lopes</strong>, Beatrice Casey, Joanna C. S. Santos.<br>
+            <b>Information and Software Technology</b>, vol. 201, article 108333, 2026</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.1016/j.infsof.2026.108333" target="_blank" rel="noopener">DOI</a>
+              <a href="https://arxiv.org/abs/2601.00477" target="_blank" rel="noopener">arXiv</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://sol.sbc.org.br/index.php/sbsi/article/view/34328" target="_blank" rel="noopener">Smart Farming for Poultry: Leveraging Chicken Raising with Low-Cost IoT-Based Information Systems</a></p>
+            <p class="pub-meta">Carla Hanau, <strong>Vinícius Lopes</strong>, Mateus Santos, Roberto Oliveira, Valdemar V. Graciano-Neto, Mohamad Kassab, José Maria N. David, Regina Braga.<br>
+            <b>Brazilian Symposium on Information Systems (SBSI)</b>, pp. 125–134, 2025</p>
+            <p class="pub-links">
+              <a href="https://sol.sbc.org.br/index.php/sbsi/article/view/34328" target="_blank" rel="noopener">Publisher</a>
+              <a href="https://sol.sbc.org.br/index.php/sbsi/article/download/34328/34119/" target="_blank" rel="noopener">PDF</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/10938017" target="_blank" rel="noopener">Smart Farming for Poultry: Enhancing Growth and Efficiency with Low-Cost Internet of Things Solutions</a></p>
+            <p class="pub-meta">Roberto Oliveira, Carla N. F. Hanau, Valdemar V. Graciano-Neto, Eliomar A. de Lima, <strong>Vinícius Carvalho Lopes</strong>, José Maria David, Regina Braga, Wagner Arbex, Mohamad Kassab.<br>
+            <b>IEEE Computer</b>, vol. 58, no. 4, pp. 106–110, 2025</p>
+            <p class="pub-links">
+              <a href="https://ieeexplore.ieee.org/document/10938017" target="_blank" rel="noopener">IEEE Xplore</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.1145/3661167.3661216" target="_blank" rel="noopener">Using Large Language Models to Generate JUnit Tests: An Empirical Study</a></p>
+            <p class="pub-meta">Mohammed Latif Siddiq, Joanna C. S. Santos, Ridwanul Hasan Tanvir, Noshin Ulfat, Fahmid Al Rifat, <strong>Vinicius Carvalho Lopes</strong>.<br>
+            <b>28th International Conference on Evaluation and Assessment in Software Engineering (EASE)</b>, Salerno, Italy, 2024</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.1145/3661167.3661216" target="_blank" rel="noopener">DOI</a>
+              <a href="https://arxiv.org/abs/2305.00418" target="_blank" rel="noopener">arXiv</a>
+              <a href="https://s2e-lab.github.io/preprints/ease24-preprint.pdf" target="_blank" rel="noopener">PDF</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://ieeexplore.ieee.org/document/9963621" target="_blank" rel="noopener">The State of IoT for Agribusiness in Brazil</a></p>
+            <p class="pub-meta">Valdemar V. Graciano-Neto, Mohamad Kassab, <strong>Vinicius Lopes</strong>, Roberto Oliveira, Renato Bulcão-Neto.<br>
+            <b>IEEE Computer</b>, vol. 55, no. 12, pp. 140–144, 2022</p>
+            <p class="pub-links">
+              <a href="https://ieeexplore.ieee.org/document/9963621" target="_blank" rel="noopener">IEEE Xplore</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.1145/3528229.3529386" target="_blank" rel="noopener">Deriving Experiments from E-SECO Software Ecosystem in the Technology Transfer Process for the Livestock Domain</a></p>
+            <p class="pub-meta">Jonas Gomes, <strong>Vinícius Carvalho Lopes</strong>, Valdemar V. Graciano Neto, Roberto Felicio de Oliveira, Mohamad Kassab, José Maria N. David, Regina Braga, Wagner Arbex.<br>
+            <b>10th IEEE/ACM International Workshop on Software Engineering for Systems-of-Systems and Software Ecosystems (SESoS, co-located with ICSE)</b>, pp. 1–8, 2022</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.1145/3528229.3529386" target="_blank" rel="noopener">DOI</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.1504/IJCAT.2022.130877" target="_blank" rel="noopener">A Systematic Mapping Study on IoT-Based Software Systems for Precision Agriculture</a></p>
+            <p class="pub-meta"><strong>Vinícius C. Lopes</strong>, Cleiton Silva, Dayana Gonçalves, Roberto Oliveira, Renato Bulcão-Neto, Mohamad Kassab, Valdemar V. Graciano-Neto.<br>
+            <b>International Journal of Computer Applications in Technology (IJCAT)</b>, vol. 70, no. 3/4, pp. 155–170, 2022</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.1504/IJCAT.2022.130877" target="_blank" rel="noopener">DOI</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://sol.sbc.org.br/index.php/sbiagro/article/view/18404" target="_blank" rel="noopener">Towards an IoT-Based Architecture for Monitoring and Automated Decision-Making in an Aviary Environment</a></p>
+            <p class="pub-meta"><strong>Vinícius C. Lopes</strong>, Roberto Felício de Oliveira, Valdemar Vicente Graciano Neto.<br>
+            <b>Brazilian Congress on Agroinformatics (SBIAGRO)</b>, pp. 320–328, 2021</p>
+            <p class="pub-links">
+              <a href="https://sol.sbc.org.br/index.php/sbiagro/article/view/18404" target="_blank" rel="noopener">Publisher</a>
+              <a href="https://sol.sbc.org.br/index.php/sbiagro/article/download/18404/18237/" target="_blank" rel="noopener">PDF</a>
+            </p>
+          </li>
+
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://doi.org/10.1145/3425174.3425216" target="_blank" rel="noopener">A Systematic Mapping Study on Software Testing for Systems-of-Systems</a></p>
+            <p class="pub-meta"><strong>Vinicius Carvalho Lopes</strong>, Marcus Norberto, Douglas Winston R. S., Mohamad Kassab, Anderson da Silva Soares, Roberto Oliveira, Valdemar Vicente Graciano Neto.<br>
+            <b>5th Brazilian Symposium on Systematic and Automated Software Testing (SAST)</b>, pp. 88–97, 2020</p>
+            <p class="pub-links">
+              <a href="https://doi.org/10.1145/3425174.3425216" target="_blank" rel="noopener">DOI</a>
+            </p>
+          </li>
+        </ul>
+
+        <h3>Preprints</h3>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <p class="pub-title"><a href="https://arxiv.org/abs/2103.14100" target="_blank" rel="noopener">Expanding Frontiers: Settling an Understanding of Systems-of-Information Systems</a></p>
+            <p class="pub-meta">Valdemar V. Graciano Neto, Bruno G. A. Lebtag, Paulo G. Teixeira, Priscilla Batista, <strong>Vinícius Carvalho Lopes</strong>, Jamal El-Hachem, Jérémy Buisson, Flavio Oquendo, ..., Elisa Yumi Nakagawa.<br>
+            <b>arXiv:2103.14100</b>, 2021</p>
+            <p class="pub-links">
+              <a href="https://arxiv.org/abs/2103.14100" target="_blank" rel="noopener">arXiv</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2>Experience</h2>
+        <p class="more">A fuller list is in my <a href="CV_Vinicius_Lopes.pdf" target="_blank" rel="noopener">CV</a>.</p>
+
+        <div class="job">
+          <h3>Software Security Research Assistant · University of Notre Dame</h3>
+          <p class="meta">January 2022 – Present · Advisor: Dr. Joanna C. S. Santos</p>
+          <ul>
+            <li>Built a Docker-based exploit validation pipeline for CVEs across Apache Struts, Tomcat, ActiveMQ, and other projects; found a 79.2% false positive rate among 168 exploit-validated VCC labels drawn from six existing datasets (3,105 samples). Published at ESEM 2026.</li>
+            <li>Developed a synthetic dataset of vulnerability-contributing commits using large language models, code analysis techniques, and the WALA framework (Java and Python).</li>
+            <li>Designed and evaluated machine learning models with novel security features to improve VCC identification.</li>
+            <li>Leading an empirical study comparing security-related and non-security pull requests across project metrics, including which CWEs are hardest to patch.</li>
+            <li>Building a commit analyzer in Java that uses static code analysis to detect vulnerability-introducing changes and locate them in the codebase.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Research Mentor, Computing Skills Accelerator (CSA) Program · University of Notre Dame</h3>
+          <p class="meta">Summer 2025</p>
+          <ul>
+            <li>Mentored two students with no prior research experience; designed and scoped a project with clear goals, timelines, and milestones.</li>
+            <li>Guided them in building a synthetic VCC dataset with retrieval-augmented generation (RAG) and LLMs, and supervised their poster presentation at a research symposium.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Embedded Software Intern · Magna International</h3>
+          <p class="meta">May – August 2023 · Troy, MI</p>
+          <ul>
+            <li>Developed and optimized algorithms for transmitting and receiving in-car camera images using two USB cameras and two SK-TDA4VM boards, reducing the delay between camera input and the vehicle display.</li>
+            <li>Worked in C/C++ with the VP9, H.264, and H.265 encoders.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Research Assistant · Federal University of Goiás</h3>
+          <p class="meta">2020 – 2022 · Goiânia, Brazil · CAPES fellow</p>
+          <ul>
+            <li>Designed and implemented an IoT architecture in C/C++ and Arduino to monitor temperature and humidity and automate climate control in an aviary; deployed it on a production farm and collected real-world performance data over one month. <a href="https://sol.sbc.org.br/index.php/sbiagro/article/view/18404" target="_blank" rel="noopener">(SBIAGRO 2021)</a> <a href="https://sol.sbc.org.br/index.php/sbsi/article/view/34328" target="_blank" rel="noopener">(SBSI 2025)</a> <a href="https://ieeexplore.ieee.org/document/10938017" target="_blank" rel="noopener">(IEEE Computer 2025)</a></li>
+            <li>Developed a JavaScript web application giving farmers real-time monitoring and remote access to environmental data.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Undergraduate Research Assistant · Federal University of Goiás</h3>
+          <p class="meta">2014 – 2018 · Goiânia, Brazil · CNPq fellow</p>
+          <ul>
+            <li>Research on applying ubiquitous computing, software architecture, and computational intelligence to home patient monitoring; presented as a poster at CBIS 2016 (Brazilian Congress on Health Informatics).</li>
+            <li>Led a systematic mapping study on software testing for systems-of-systems, published at SAST 2020.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HONORS -->
+    <section id="honors" class="section alt">
+      <div class="container">
+        <h2>Honors &amp; Awards</h2>
+        <ul class="bullet-list">
+          <li><strong>Kylemore Abbey Writing Retreat Award</strong>, University of Notre Dame College of Engineering (2026): granted to selected PhD students for a dissertation writing retreat at the Notre Dame Kylemore Abbey Global Centre in Ireland.</li>
+          <li><strong>NSF Student Travel Grant</strong> to attend the 44th International Conference on Software Engineering (ICSE 2022), Pittsburgh, PA.</li>
+          <li><strong>CAPES Scholarship</strong> (Coordination for the Improvement of Higher Education Personnel), Brazilian Government: graduate research assistantship at the Federal University of Goiás.</li>
+          <li><strong>CNPq Scholarship</strong> (National Council for Scientific and Technological Development), Brazilian Government: undergraduate research assistantship at the Federal University of Goiás.</li>
+          <li><strong>National Scholarship</strong> for the B.Sc. in Software Engineering, Federal University of Goiás.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="section">
+      <div class="container">
+        <h2>News</h2>
+        <ul class="news-list">
+          <li>
+            <time datetime="2026-10">Oct 2026</time>
+            Presented our paper on the quality of vulnerability-contributing commit datasets at ESEM 2026 in Munich, Germany (LIPIcs vol. 394).
+          </li>
+          <li>
+            <time datetime="2026-09">Sep 2026</time>
+            "Security in the Age of AI Teammates: An Empirical Study of Agentic Pull Requests on GitHub" accepted at <em>Information and Software Technology</em>.
+          </li>
+          <li>
+            <time datetime="2026-08">Aug 2026</time>
+            Our paper "On the Quality of Vulnerability-Contributing Commit Datasets" accepted to the ESEM 2026 research track.
+          </li>
+          <li>
+            <time datetime="2026">2026</time>
+            Selected for the Notre Dame College of Engineering Kylemore Abbey Writing Retreat in Ireland.
+          </li>
+          <li>
+            <time datetime="2026-04">Apr 2026</time>
+            Presented work on test transplantation for ML model-loading code at JAWs 2026, co-located with ICSE 2026, in Rio de Janeiro, Brazil.
+          </li>
+          <li>
+            <time datetime="2025-12">Dec 2025</time>
+            Passed my PhD candidacy exam and completed the M.S. in Computer Science and Engineering along the way.
+          </li>
+          <li>
+            <time datetime="2025-06">Summer 2025</time>
+            Mentored two undergraduates in the Computing Skills Accelerator program and taught Python to veterans with the Warrior-Scholar Project.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH INTERESTS -->
+    <section id="research-interests" class="section alt">
+      <div class="container">
+        <h2>Research Interests</h2>
+        <ul class="bullet-list">
+          <li><strong>Software vulnerability lifecycle</strong>How vulnerabilities are introduced into open-source software, how to detect security-critical code changes at commit time, and how fixes propagate across projects and releases.</li>
+          <li><strong>Program analysis</strong>Static, data-flow, and incremental analysis techniques that scale to continuously evolving codebases, using and extending frameworks such as WALA, Joern, SVF, and CodeQL.</li>
+          <li><strong>Empirical software engineering</strong>Dataset quality, systematic reviews and mapping studies, and exploit-based validation that separates real vulnerability-introducing changes from SZZ false positives.</li>
+          <li><strong>AI for software security</strong>ML-based VCC detection, LLM-generated synthetic vulnerability data, LLM-assisted CWE classification, and the security of pull requests authored by AI coding agents.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <span class="tag">Dissertation · Goal 1</span>
+            <h3>Exploit-Based VCC Dataset Validation</h3>
+            <p>A systematic review of 38 security-focused studies and a two-tier, exploit-based validation methodology applied to 3,105 commits from six public VCC datasets, with reproducible Docker labs for the validated CVEs.</p>
+            <a href="https://doi.org/10.5281/zenodo.21904512" class="btn" target="_blank" rel="noopener">Artifact</a>
+          </div>
+
+          <div class="project-card">
+            <span class="tag">Dissertation · Goal 2</span>
+            <h3>D-VINCI</h3>
+            <p>Machine-learning-based detection of vulnerability-contributing commits with novel security features, trained and evaluated on validated rather than heuristically labeled data.</p>
+          </div>
+
+          <div class="project-card">
+            <span class="tag">Dissertation · Goal 2</span>
+            <h3>ProDive</h3>
+            <p>A Java commit analyzer built on incremental static analysis: it re-analyzes only what a commit changes, making vulnerability detection and localization practical at commit time for large, evolving codebases.</p>
+          </div>
+
+          <div class="project-card">
+            <span class="tag">Dissertation · Goal 3</span>
+            <h3>SynVCC</h3>
+            <p>Synthetic generation of vulnerability-contributing commits with LLMs, retrieval-augmented generation, and WALA-based code analysis, addressing the scarcity of validated ground truth for training and benchmarking VCC detectors.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHING & SERVICE -->
+    <section id="service" class="section alt">
+      <div class="container">
+        <h2>Teaching &amp; Service</h2>
+        <div class="service-grid">
+          <div class="job">
+            <h3>Teaching Assistant, Programming Paradigms</h3>
+            <p class="meta">University of Notre Dame · August 2025 – Present</p>
+            <ul><li>Supporting 50+ students: office hours and grading of Java and Kotlin assignments.</li></ul>
+          </div>
+          <div class="job">
+            <h3>Teaching Assistant, Programming Paradigms</h3>
+            <p class="meta">University of Notre Dame · January 2022 – December 2022</p>
+            <ul><li>Supported 140+ students, prepared teaching materials, and lectured two classes on Java.</li></ul>
+          </div>
+          <div class="job">
+            <h3>Instructor, Warrior-Scholar Project</h3>
+            <p class="meta">University of Notre Dame · Summer 2025</p>
+            <ul><li>Designed and taught Python classes for military veterans, culminating in a Pandas data project feeding a simple ML model.</li></ul>
+          </div>
+          <div class="job">
+            <h3>Professional Chair, Graduate Society of Women in Engineering (GradSWE)</h3>
+            <p class="meta">University of Notre Dame</p>
+            <ul><li>Organizing professional development programming for graduate students in engineering.</li></ul>
+          </div>
+          <div class="job">
+            <h3>Student Volunteer, ICSE 2022</h3>
+            <p class="meta">44th International Conference on Software Engineering · Pittsburgh, PA · May 2022</p>
+            <ul><li>Supported registration, event logistics, and presentation management.</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section">
+      <div class="container">
+        <h2>CV</h2>
+        <p>You can download or view my full CV here:</p>
+        <p><a class="button" href="CV_Vinicius_Lopes.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <p><strong>Vinicius Carvalho Lopes</strong> · PhD Candidate, Computer Science &amp; Engineering, University of Notre Dame</p>
+          <p>Email: <a href="mailto:vlopes@nd.edu">vlopes@nd.edu</a></p>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/vinilopes03/" target="_blank" rel="noopener">LinkedIn</a> ·
+          <a href="https://scholar.google.com/citations?user=oDJHnFcAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> ·
+          <a href="https://github.com/vinilopes03" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Accessible mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('primary-nav');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+    // Close the menu after choosing a section on mobile
+    document.querySelectorAll('#primary-nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
